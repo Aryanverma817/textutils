@@ -52,18 +52,21 @@ export default function Textform(props) {
   <textarea className="form-control" id="Mytax" rows="3"  onChange={handleOnChange}  value={text}>Write here..... </textarea>
 </div>
 
-<button className='btn btn-primary' onClick={handleUpClicked}>Convert to uppercase</button>
-<button className='btn btn-primary mx-2' onClick={uppercase1}>LowerCase</button>
-<button className='btn btn-primary mx-2' onClick={clear}> clear</button>
+<button className={`btn btn-${props.mode==='light'?'dark':'light'} ` }  onClick={handleUpClicked}>Convert to uppercase</button>
+<button className={`btn btn-${props.mode==='light'?'dark':'light'} mx-2`} onClick={uppercase1}>LowerCase</button>
+<button className={`btn btn-${props.mode==='light'?'dark':'light'} sm-mx-2 `} onClick={clear}>clear</button>
     </div>
     <div className='container my-2' style={{color:props.mode==='light'?'black':'white'}}>
         <h4>Preview</h4>
-        <p>{text.split(" ").length} words</p>
+        <p>{text.trim() === '' ? 0 : text.match(/\S+/g).length} words </p>
+
+
         <p>{text.length} characters</p>
         <h5>Summery</h5>
         <p >{text}</p> 
     </div>
 </>
+
   )
 }
 

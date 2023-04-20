@@ -3,9 +3,14 @@ import './App.css';
 import Navbar from './componets/Navbar';
 import Message from './componets/Message';
 import Textform from './componets/Textform';
+import About from './componets/About';
 import React, {useState} from 'react';
 
-
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route
+} from "react-router-dom";
 
 
 
@@ -41,12 +46,25 @@ else{
  }
   return (
 <>
-  <Navbar title ="Textutils" mode={mode} toggleMode={toggleMode}  ></Navbar>
+  
+<Router>
+<Navbar title="TextUtils" mode={mode} toggleMode={toggleMode} key={new Date()} />
 <Message alert={show}/>
 <div className='container'>
-<Textform heading="Enter the text to analyze  below" mode={mode} showmessage={showmessage} />
+
+<Routes>
+      
+      <Route exact path="/" element={ <Textform heading="Enter the text to analyze  below" mode={mode} showmessage={showmessage} />} />
+      <Route exact path="/about" element={<About/>}/>
+
+</Routes>
 </div>
+</Router>
+
+
+
 </>
+
 
    
    
